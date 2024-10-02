@@ -1,4 +1,5 @@
 #include "coordinate.h"
+#include "parser.h"
 
 t_sph *new_sphpoint (double a, double b, double R) {
 	t_sph *k = malloc(sizeof(t_sph));

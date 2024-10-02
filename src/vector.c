@@ -1,4 +1,5 @@
 #include "coordinate.h"
+#include "parser.h"
 #include "utils.h"
 #include <math.h>
 

@@ -50,8 +50,17 @@ t_scene	*parse_scene(void) {    // должен парсить, но сейча�
 	return (scene);
 }
 
-int32_t	main(void)
+int	main(int args, char **argv)
 {
+	t_input	*input;
+
+	if (args != 2)
+		exit_error("Invalid number of arguments");
+	input = parse_input(argv[1]);
+	if (!input)
+		exit_error("Parsing error");
+	debug_print(input);
+
 	// mlx_set_setting(MLX_MAXIMIZED, true);  // ???
 	mlx_t* mlx = mlx_init(WIDTH, HEIGHT, "miniRT", true);
 

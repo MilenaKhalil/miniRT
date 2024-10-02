@@ -1,4 +1,5 @@
 #include "coordinate.h"
+#include "parser.h"
 
 t_point *new_point (double x, double y, double z) {
 	t_point *k = malloc(sizeof(t_point));

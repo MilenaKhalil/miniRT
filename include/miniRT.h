@@ -4,7 +4,7 @@ typedef struct s_light	t_light;
 typedef struct s_sphere t_sphere;
 typedef struct s_scene	t_scene;
 
-#include "MLX42/include/MLX42/MLX42.h"
+#include "MLX42.h"
 #include "utils.h"
 #include "color.h"
 #include "light.h"
@@ -12,6 +12,7 @@ typedef struct s_scene	t_scene;
 #include "sphere.h"
 #include "camera.h"
 #include "ray_tracing.h"
+#include "parser.h"
 
 #include <math.h>
 #include <stdlib.h>

@@ -5,11 +5,7 @@
 #include <limits.h>
 #include <stdio.h>
 
-typedef struct s_point {
-	double x;
-	double y;
-	double z;
-} t_point;
+typedef struct s_point t_point;
 
 typedef struct s_sph {
 	double R;

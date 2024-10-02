@@ -1,2 +1,13 @@
-*.o
+obj/
 miniRT
+libft/obj
+libft/libft.a
+MLX42/libmlx42.a
+MLX42/src/mlx_frag_shader.c
+MLX42/src/mlx_vert_shader.c
+MLX42/src/*.o
+MLX42/src/utils/*.o
+MLX42/src/textures/*.o
+MLX42/src/font/*.o
+MLX42/lib/glad/*.o
+MLX42/lib/png/*.o

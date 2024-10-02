@@ -1,6 +1,7 @@
 #pragma once
 
 #include "miniRT.h"
+#include "coordinate.h"
 
 typedef struct s_camera {
 	t_point *veiw_point;     // veiw_point and direction can be one vector instead (I will implement it later...)

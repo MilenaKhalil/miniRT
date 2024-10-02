@@ -1,4 +1,5 @@
 #include "coordinate.h"
+#include "parser.h"
 
 void print_point(t_point a) {
 	printf ("point x = %f, y = %f, z = %f\n", a.x, a.y, a.z);
