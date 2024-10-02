@@ -5,6 +5,7 @@ MLX = MLX42/libmlx42.a
 OBJ = $(SRC:.c=.o)
 
 CFLAGS = -Ofast #  -Wall -Werror -Wextra
+FRAMEWORKS = -lglfw -lm 
 
 NAME = miniRT
 
@@ -18,7 +19,7 @@ $(MLX):
 	$(MAKE) -C MLX42
 	
 $(NAME): $(OBJ) $(MLX)
-	$(CC) $(CFLAGS) $^ -o $@ -lglfw -framework Cocoa -framework OpenGL -framework IOKit
+	$(CC) $(CFLAGS) $^ -o $@ $(FRAMEWORKS)
 
 %.o: %.c $(wildcard *.h)
 	$(CC) $(CFLAGS) -c -o $@ $<
