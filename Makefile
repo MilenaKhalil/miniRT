@@ -1,6 +1,27 @@
+# Detect architecture
+ARCH := $(shell uname -m)
+
+# Install GLFW if not found
+GLFW_CHECK := $(shell pkg-config --exists glfw3 || echo "MISSING")
+ifeq ($(GLFW_CHECK),MISSING)
+HOMEBREW_PREFIX := $(shell brew --prefix)
+GLFW_PATH := $(HOMEBREW_PREFIX)/opt/glfw
+GLFW_INC := $(GLFW_PATH)/include
+GLFW_LIB := $(GLFW_PATH)/lib
+
+else
+GLFW_PATH := $(shell pkg-config --variable=prefix glfw3)
+GLFW_INC := $(GLFW_PATH)/include
+GLFW_LIB := $(GLFW_PATH)/lib
+endif
+
+
+
 CC = cc
 DEBUG = -fsanitize=address
 FLAGS = -Wall -Wextra -Werror
+FRAMEWORKS = -L$(GLFW_LIB) -lglfw -framework Cocoa -framework Metal -framework QuartzCore -lm
+ALL_INC = -I $(INC_DIR) -I libft -I MLX42/include/MLX42 -I$(GLFW_INC)
 NAME = miniRT
 
 SRCS = parser/error_handling.c \
@@ -38,7 +59,6 @@ INCS =	parser.h \
 LIBFT = libft/libft.a
 MLX = MLX42/libmlx42.a
 
-FRAMEWORKS = -lglfw -lm
 INC_DIR = include/
 
 SRC_DIR = src/
@@ -50,7 +70,7 @@ OBJ = $(addprefix $(OBJ_DIR), $(notdir $(SRCS:.c=.o)))
 INC = $(addprefix $(INC_DIR), $(INCS))
 ALL_INC = -I $(INC_DIR) -I libft -I MLX42/include/MLX42
 
-all: $(NAME)
+all: glfw $(NAME)
 
 $(NAME): $(OBJ_DIR) $(OBJ) $(INC) $(LIBFT) $(MLX)
 	$(CC) $(FLAGS) $(OBJ) $(LIBFT) $(MLX) $(FRAMEWORKS)  -o $(NAME)
@@ -82,4 +102,10 @@ fclean: clean
 
 re: fclean all
 
+.PHONY: glfw
+glfw:
+	@echo "pkg-config not found, installing via Homebrew..."
+	brew install pkg-config
+	@echo "GLFW not found, installing via Homebrew..."
+	brew install glfw
  
